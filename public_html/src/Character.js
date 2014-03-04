@@ -7,6 +7,7 @@ var Character = function () {
     this._attributes = null;
     this._weapon = null;
     this._armor = 0;
+    this._life = 0;
 };
 
 
@@ -62,5 +63,15 @@ Character.prototype.setArmor = function (value) {
 
 Character.prototype.getArmor = function () {
     return this._armor
+
+};
+
+Character.prototype.setLife = function (value) {
+    this._life = value;
+    return this;
+};
+
+Character.prototype.getLife = function () {
+    return this._life
 
 };

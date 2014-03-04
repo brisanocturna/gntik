@@ -6,6 +6,8 @@ describe('Shooting be carefull', function () {
         attributes.setConcentration(11);
         attributes.setResistance(9);
         soldier.setAttributes(attributes);
+        
+        soldier.setLife(4);
 
         soldier.setWeapon(getRifle());
         soldier.setArmor(1);
@@ -75,6 +77,21 @@ describe('Shooting be carefull', function () {
 
         expect(rollResolutor.armorPenetration(roller, shooter, target, 9)).toBe('no damage');
         expect(rollResolutor.armorPenetration(roller, shooter, target, 8)).toBe('damage');
+    });
+    it('shoot with damage', function () {
+        var shooter = getSoldier();
+        var target = getSoldier();
+        var map = new Map();
+        var roller = new Roller(map);
+
+        shooter.setPosition(new Position(0, 0));
+        target.setPosition(new Position(0, 55));
+
+        var rollResolutor = new RollResolutor();
+
+        expect(rollResolutor.damage(roller, shooter, target, 7)).toBe('no damage');
+        expect(rollResolutor.damage(roller, shooter, target, 7)).toBe('damage');
+        expect(rollResolutor.damage(roller, shooter, target, 14)).toBe('damage critical');
     });
     
 });
