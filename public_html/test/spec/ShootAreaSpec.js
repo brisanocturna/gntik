@@ -89,7 +89,6 @@ describe('Shooting be carefull', function () {
 
         var rollResolutor = new RollResolutor();
 
-        expect(rollResolutor.damage(roller, shooter, target, 7)).toBe('no damage');
         expect(rollResolutor.damage(roller, shooter, target, 7)).toBe('damage');
         expect(rollResolutor.damage(roller, shooter, target, 14)).toBe('damage critical');
     });

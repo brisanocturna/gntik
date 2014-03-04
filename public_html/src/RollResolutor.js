@@ -46,12 +46,10 @@ RollResolutor.prototype.armorPenetration = function (roller, shooter, target, di
 RollResolutor.prototype.damage = function (roller, shooter, target, dice) {
     var succesShoot = this.shoot(roller, shooter, target, dice);
     var penetrateArmor = 8;
-    var noPenetrateArmor = 9;
-    if (succesShoot == 'success'){
-        this.armorPenetration(roller, shooter, target, noPenetrateArmor);
-        this.armorPenetration(roller, shooter, target, penetrateArmor);
-    }else if(succesShoot == 'critical'){
-        this.armorPenetration(roller,shooter,target, 0);
+    if (succesShoot === 'success'){
+       return this.armorPenetration(roller, shooter, target, penetrateArmor);
+    }else if(succesShoot === 'critical'){
+       return 'damage critical';
     }
     
 };
