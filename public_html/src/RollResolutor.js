@@ -19,3 +19,19 @@ RollResolutor.prototype.shoot = function (roller, shooter, target, dice) {
         return 'success';
     
 };
+/**
+ * 
+ * @param {Roller} roller
+ * @param {Character} shooter
+ * @param {Character} target
+ * @param {Number} dice
+ * @returns {undefined}
+ */
+RollResolutor.prototype.armorPenetration = function (roller, shooter, target, dice) {
+    var successValue = roller.armorSuccessValue(shooter, target);
+    if (dice >= successValue){
+        return 'no damage';
+    }
+        return 'damage';
+    
+};

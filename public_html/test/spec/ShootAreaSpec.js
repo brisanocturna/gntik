@@ -62,6 +62,20 @@ describe('Shooting be carefull', function () {
         expect(rollResolutor.shoot(roller, shooter, target, 20)).toBe('fail');
         expect(rollResolutor.shoot(roller, shooter, target, 15)).toBe('fail');
     });
+    it('shoot pentrate armor?', function () {
+        var shooter = getSoldier();
+        var target = getSoldier();
+        var map = new Map();
+        var roller = new Roller(map);
+
+        shooter.setPosition(new Position(0, 0));
+        target.setPosition(new Position(0, 55));
+
+        var rollResolutor = new RollResolutor();
+
+        expect(rollResolutor.armorPenetration(roller, shooter, target, 9)).toBe('no damage');
+        expect(rollResolutor.armorPenetration(roller, shooter, target, 8)).toBe('damage');
+    });
     
 });
 
