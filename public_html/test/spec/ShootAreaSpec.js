@@ -19,25 +19,50 @@ describe('Shooting be carefull', function () {
         return rifle;
     }
 
-    it('shoot', function () {
+    it('shoot success', function () {
         var shooter = getSoldier();
         var target = getSoldier();
         var map = new Map();
-        //var roller = new Roller(map);
+        var roller = new Roller(map);
 
         shooter.setPosition(new Position(0, 0));
         target.setPosition(new Position(0, 55));
 
         var rollResolutor = new RollResolutor();
 
-        expect(rollResolutor.shoot(shooter, target, 20)).toBe('fail');
-        //expect(rollResolutor.shoot(shooter, target, 7)).toBe('success');
-        //expect(rollResolutor.shoot(shooter, target, 14)).toBe('critical');
-        //expect(rollResolutor.shoot(shooter, target, 15)).toBe('critical');
-
-
-
+        expect(rollResolutor.shoot(roller, shooter, target, 7)).toBe('success');
     });
+    
+    it('shoot critical', function () {
+        var shooter = getSoldier();
+        var target = getSoldier();
+        var map = new Map();
+        var roller = new Roller(map);
+
+        shooter.setPosition(new Position(0, 0));
+        target.setPosition(new Position(0, 55));
+
+        var rollResolutor = new RollResolutor();
+
+        
+        expect(rollResolutor.shoot(roller, shooter, target, 14)).toBe('critical');
+    });
+    
+    it('shoot fail', function () {
+        var shooter = getSoldier();
+        var target = getSoldier();
+        var map = new Map();
+        var roller = new Roller(map);
+
+        shooter.setPosition(new Position(0, 0));
+        target.setPosition(new Position(0, 55));
+
+        var rollResolutor = new RollResolutor();
+
+        expect(rollResolutor.shoot(roller, shooter, target, 20)).toBe('fail');
+        expect(rollResolutor.shoot(roller, shooter, target, 15)).toBe('fail');
+    });
+    
 });
 
 

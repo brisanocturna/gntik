@@ -10,7 +10,7 @@ var Roller = function (map) {
  */
 Roller.prototype.shootSuccesValue = function (shooter, target) {
     var attribute = shooter.getAttributes().getConcentration();
-    return attribute + this._distenceBonus(shooter, target);
+    return attribute + this._distanceBonus(shooter, target);
 };
 
 /**
@@ -19,7 +19,7 @@ Roller.prototype.shootSuccesValue = function (shooter, target) {
  * @param {Character} target
  * @returns {number}
  */
-Roller.prototype._distenceBonus = function (shooter, target) {
+Roller.prototype._distanceBonus = function (shooter, target) {
     var distance = this._map.getDistance(shooter, target);
     return shooter.getWeapon().getRange()[distance];
 };
